@@ -15,6 +15,14 @@ int askUserNumberTask()
 	return choice;
 }
 
+char choiceLetter()
+{
+	char let;
+	printf("¬ведите букву:\n");
+	scanf_s("%c", &let);
+	return let;
+}
+
 int main()
 {
 	system("chcp 1251"); system("cls");
@@ -25,8 +33,16 @@ int main()
 	{
 		char str[256];
 		printf("¬ведите строку:\n"); gets_s(str);
+		char letter = choiceLetter();
 
-		char* search_char = (char*)memchr(str, 'п', strlen(str));
+		int counter = 0;
+		for (int i = 0; str[i] != '\0'; i++)
+		{
+			if (strstr(str, "и"))
+				counter++;
+		}
+		printf("%d", counter);
+
 		break;
 	}
 	case 10:
