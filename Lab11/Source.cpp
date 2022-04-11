@@ -32,7 +32,8 @@ char registrReplacement(char letter)
 void letterMet(char* str, char letter, char letter2)
 {
 	int counter = 0;
-	for (int i = 0; i < strlen(str); i++)
+	int len = strlen(str);
+	for (int i = 0; i < len; i++)
 		if (str[i] == letter || str[i] == letter2)
 			counter++;
 	printf("Letter '%c(%c)' met %d once.", letter, letter2, counter);
@@ -41,7 +42,8 @@ void letterMet(char* str, char letter, char letter2)
 bool chekPalindrom(char* mas)
 {
 	char let;
-	for (int i = 0; i < strlen(mas) / 2; i++)
+	int len = strlen(mas);
+	for (int i = 0; i < len / 2; i++)
 	{
 		let = registrReplacement(mas[i]);
 		if (mas[i] != mas[strlen(mas) - i - 1] && let != mas[strlen(mas) - i - 1])
@@ -56,7 +58,8 @@ void findLenAndPalindrom(char* str)
 
 	int n = 0;
 	bool flag = true;
-	for (int i = 0; i < strlen(str) + 1; i++)
+	int len = strlen(str) + 1;
+	for (int i = 0; i < len; i++)
 	{
 		mas[n] = str[i];
 		if (str[i] == ' ' || str[i] == '\0')
