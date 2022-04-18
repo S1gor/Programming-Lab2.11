@@ -89,21 +89,26 @@ void recurringSymbol(char* wrd1, char* wrd2, char* c)
 {
 	for (int i = 0; wrd1[i] != '\0'; i++)
 	{
-		int counter = 0;
-		for (int j = 0; wrd1[j] != '\0'; j++)
-			if (wrd1[i] == wrd1[j])
-				counter++;
-		if (counter == 1)
+		int counter1 = 0;
+		char* nmb1 = strchr(wrd1, wrd1[i]);
+		while (nmb1 != NULL)
+		{
+			counter1++;
+			nmb1 = strchr(nmb1 + 1, wrd1[i]);
+		}
+		
+		if (counter1 == 1)
 		{
 			int counter2 = 0;
-			for (int k = 0; wrd2[k] != '\0'; k++)
-				if (wrd1[i] == wrd2[k])
-				{
-					counter2++;
-					c[i] = wrd1[i];
-				}
+
+			char* nmb2 = strchr(wrd2, wrd1[i]);
+			while (nmb2 != NULL)
+			{
+				counter2++;
+				nmb2 = strchr(nmb2 + 1, wrd1[i]);
+			}
 			if (counter2 == 1)
-				printf("%c\n", c[i]);
+				printf("%c\n", wrd1[i]);
 		}
 	}
 }
