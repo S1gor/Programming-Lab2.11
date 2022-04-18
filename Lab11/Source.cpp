@@ -94,6 +94,8 @@ void recurringSymbol(char* wrd1, char* wrd2, char* c)
 		while (nmb1 != NULL)
 		{
 			counter1++;
+			if (counter1 == 2)
+				break;
 			nmb1 = strchr(nmb1 + 1, wrd1[i]);
 		}
 		
@@ -105,6 +107,8 @@ void recurringSymbol(char* wrd1, char* wrd2, char* c)
 			while (nmb2 != NULL)
 			{
 				counter2++;
+				if (counter2 == 2)
+					break;
 				nmb2 = strchr(nmb2 + 1, wrd1[i]);
 			}
 			if (counter2 == 1)
