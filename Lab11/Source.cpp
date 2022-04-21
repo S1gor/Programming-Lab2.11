@@ -52,54 +52,52 @@ void findLenAndPalindrom(char* str)
 {
 	printf("\n");
 	char mas[20] = { 0 };
-
-	int n = 0;
-	bool flag = true;
-	int len = strlen(str) + 1;
 	
-	for (int i = 0; i < len; i++)
+	bool flag = true;
+	char* nmb = strchr(str, ' ');
+
+	int i = 0;
+	int n = 0;
+	while (nmb != NULL)
 	{
-		char* nmb = strchr(str, ' ');
-		if (nmb == NULL)
+		/*if (str[i] == ' ')
+		{
+			while (str[i] == ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
+				i++;
+			i++;
+			nmb = strchr(nmb + 1, ' ');
+		}*/
+
+		for (i; str[i] != *nmb; i++)
 		{
 			mas[n] = str[i];
 			n++;
 		}
+		mas[n] = '\0';
+		if (chekPalindrom(mas))
+			printf("%s - Palindrom\n", mas);
 		else
 		{
-			mas[n] = '\0';
-
-			if (chekPalindrom(mas))
-				printf("%s - Palindrom\n", mas);
-			else
+			printf("%s(%d) - No palindrom\n", mas, strlen(mas));
+			if (strlen(mas) % 2 != 0)
 			{
-				printf("%s(%d) - No palindrom\n", mas, strlen(mas));
-				if (strlen(mas) % 2 != 0)
-				{
-					flag = false;
-					printf("Not every word that is not a palindrome has an even length.\n");
-					break;
-				}
+				flag = false;
+				printf("Not every word that is not a palindrome has an even length.\n");
+				break;
 			}
-			for (int j = 0; j < n; j++)
-				mas[j] = ' ';
-			nmb = strchr(nmb + 1, ' ');
-			n = 0;
 		}
+
+		for (int j = 0; j < n; j++)
+			mas[j] = ' ';
+
+		i++;
+		n = 0;
+		nmb = strchr(nmb + 1, ' ');
 	}
-	//if (flag)
-		//printf("Every word that is not a palindrome has an even length\n");
+		if (flag)
+			printf("Every word that is not a palindrome has an even length\n");
+
 		
-		//printf("%s", mas);
-		//nmb = strchr(str, ' ');
-	
-	
-	
-	
-	
-	
-	
-	
 	/*for (int i = 0; i < len; i++)
 	{
 		mas[n] = str[i];
