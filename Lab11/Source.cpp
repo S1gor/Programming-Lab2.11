@@ -55,9 +55,12 @@ void findLenAndPalindrom(char* str)
 	
 	bool flag = true;
 	char* nmb = strchr(str, ' ');
+	
+	//char* rnb = strchr(str, '\0');
 
 	int i = 0;
 	int n = 0;
+
 	while (nmb != NULL)
 	{
 		/*if (str[i] == ' ')
@@ -93,6 +96,18 @@ void findLenAndPalindrom(char* str)
 		i++;
 		n = 0;
 		nmb = strchr(nmb + 1, ' ');
+
+		/*while (rnb != NULL)
+		{
+			for (int i = 0; i != *rnb; i++)
+			{
+				mas[n] = str[i];
+				n++;
+			}
+			rnb = strchr(rnb + 1, '\0');
+		}
+		printf("|%s|", mas);
+		n = 0;*/
 	}
 		if (flag)
 			printf("Every word that is not a palindrome has an even length\n");
