@@ -54,23 +54,41 @@ void findLenAndPalindrom(char* str)
 	char mas[20] = { 0 };
 	
 	bool flag = true;
-	char* nmb = strchr(str, ' ');
-	
-	//char* rnb = strchr(str, '\0');
 
+	char* s1 = str;	
+	char* s2 = strchr(str, ' ');
+	char dif = 0;
+
+	while (s1 != NULL && s2 != NULL)
+	{
+		if (s2 - s1 == 1)
+		{
+			s1 = s2;
+			s2 = strchr(s2 + 1, ' ');
+			dif++;
+		}
+		else
+		{
+			strncpy_s(mas, str + dif, s2 - s1);
+			dif = s2 - s1 + 1;
+
+			printf("%s\n", mas);
+			
+
+			s1 = s2;
+			s2 = strchr(s2 + 1, ' ');
+		}
+	}
+
+
+
+
+	/*char* nmb = strchr(str, ' ');
+	
 	int i = 0;
 	int n = 0;
-
 	while (nmb != NULL)
 	{
-		/*if (str[i] == ' ')
-		{
-			while (str[i] == ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
-				i++;
-			i++;
-			nmb = strchr(nmb + 1, ' ');
-		}*/
-
 		for (i; str[i] != *nmb; i++)
 		{
 			mas[n] = str[i];
@@ -89,57 +107,15 @@ void findLenAndPalindrom(char* str)
 				break;
 			}
 		}
-
 		for (int j = 0; j < n; j++)
 			mas[j] = ' ';
 
 		i++;
 		n = 0;
 		nmb = strchr(nmb + 1, ' ');
-
-		/*while (rnb != NULL)
-		{
-			for (int i = 0; i != *rnb; i++)
-			{
-				mas[n] = str[i];
-				n++;
-			}
-			rnb = strchr(rnb + 1, '\0');
-		}
-		printf("|%s|", mas);
-		n = 0;*/
 	}
 		if (flag)
-			printf("Every word that is not a palindrome has an even length\n");
-
-		
-	/*for (int i = 0; i < len; i++)
-	{
-		mas[n] = str[i];
-		if (str[i] == ' ' || str[i] == '\0')
-		{
-			mas[n] = '\0';
-			if (chekPalindrom(mas))
-				printf("%s - Palindrom\n", mas);
-			else
-			{
-				printf("%s(%d) - No palindrom\n", mas, strlen(mas));
-				if (strlen(mas) % 2 != 0)
-				{
-					flag = false;
-					printf("Not every word that is not a palindrome has an even length.\n");
-					break;
-				}
-			}
-			for (int j = 0; j < n; j++)
-				mas[j] = ' ';
-			n = 0;
-			continue;
-		}
-		n++;
-	}
-	if (flag)
-		printf("Every word that is not a palindrome has an even length\n");*/
+			printf("Every word that is not a palindrome has an even length\n");*/
 }
 
 void recurringSymbol(char* wrd1, char* wrd2, char* c)
