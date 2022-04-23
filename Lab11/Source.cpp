@@ -43,9 +43,19 @@ void letterMet(char* str, char letter)
 bool chekPalindrom(char* mas)
 {
 	int len = strlen(mas);
-	for (int i = 0; i < len / 2; i++)
-		if (mas[i] != mas[len - i - 1])
-			return false;
+
+	if (mas[0] == ' ')
+	{
+		for (int i = 1; i < (len - 1) / 2; i++)
+			if (mas[i] != mas[len - 1 - i - 1])
+				return false;
+	}
+	else
+	{
+		for (int i = 0; i < len / 2; i++)
+			if (mas[i] != mas[len - i - 1])
+				return false;
+	}
 	return true;
 }
 void findLenAndPalindrom(char* str)
@@ -70,11 +80,35 @@ void findLenAndPalindrom(char* str)
 		else
 		{
 			strncpy_s(mas, str + dif, s2 - s1);
-			dif = s2 - s1 + 1;
+			dif += s2 - s1;
 
-			printf("%s\n", mas);
+
+			if (chekPalindrom(mas))
+				printf("%s - Palindrom\n", mas);
+			else
+			{
+				printf("%s(%d) - No palindrom\n", mas, strlen(mas));
+				if (mas[0] == ' ')
+					if (strlen(mas - 1) % 2 != 0)
+					{
+						flag = false;
+						printf("Not every word that is not a palindrome has an even length.\n");
+						break;
+					}
+				else if (strlen(mas) % 2 != 0)
+				{
+					flag = false;
+					printf("Not every word that is not a palindrome has an even length.\n");
+					break;
+				}
+			}
+
+
+
+
 			
 
+			//printf("%s\n", mas);
 			s1 = s2;
 			s2 = strchr(s2 + 1, ' ');
 		}
