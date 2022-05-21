@@ -42,24 +42,12 @@ void letterMet(char* str, char letter)
 
 bool chekPalindrom(char* mas, int dif)
 {
-	if(dif == 0)
-	{ 
-		int len = strlen(mas);
-
-		for (int i = 0; i < len / 2; i++)
-			if (mas[i] != mas[len - i - 1])
-				return false;
-		return true;
-	}
-	else
-	{
-		int len = strlen(mas) - 1;
-
-		for (int i = 0; i < len / 2; i++)
-			if (mas[i] != mas[len - i - 1])
-				return false;
-		return true;
-	}
+	int len = strlen(mas) - 1;
+	if (dif == 0)	len = strlen(mas);
+	for (int i = 0; i < len / 2; i++)
+		if (mas[i] != mas[len - i - 1])
+			return false;
+	return true;
 }
 void findLenAndPalindrom(char* str)
 {
